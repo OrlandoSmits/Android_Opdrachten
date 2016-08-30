@@ -6,7 +6,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="100dp"
 
         android:id="@+id/imageViewLightBlue"
         android:background="@android:color/holo_blue_light"/>
@@ -14,7 +14,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="100dp"
 
         android:id="@+id/imageViewDarkBlue"
         android:background="@android:color/holo_blue_dark"
@@ -23,7 +23,7 @@
 
     <ImageView
         android:layout_width="50dp"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
 
         android:id="@+id/imageViewDarkOrange"
         android:background="@android:color/holo_orange_dark"
@@ -31,7 +31,7 @@
 
     <ImageView
         android:layout_width="50dp"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
 
         android:id="@+id/imageViewLightOrange"
         android:background="@android:color/holo_orange_light"
@@ -40,11 +40,30 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
 
         android:id="@+id/imageViewPurple"
         android:background="@android:color/holo_purple"
         android:layout_below="@id/imageViewDarkBlue"
         android:layout_toRightOf="@id/imageViewLightOrange"/>
 
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/imageViewDarkBlue"
+        android:layout_toRightOf="@+id/imageViewLightOrange"
+        android:background="@android:color/white"
+        android:hint="Input Veld" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageViewLightRed"
+
+        android:background="@android:color/holo_red_light"
+        android:layout_below="@+id/imageViewDarkOrange"
+
+        />
 </RelativeLayout>
