@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         u.mImage = image;
 
         dbHandler.addUser(u);
-
+        mUserList.add(u);
         mUserAdapter.notifyDataSetChanged();
     }
 
