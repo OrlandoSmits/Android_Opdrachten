@@ -7,53 +7,42 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     ListView mUserListView;
     UserAdapter mUserAdapter;
-    ArrayList mUserList = new ArrayList();
+    ArrayList<User> mUserList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Create Person 1
-        User u = new User();
-        u.mFirstName = "Orlando";
-        u.mLastName = "Smits";
-        u.mGender = "Male";
-        u.mEmail = "orlandosmits@live.nl";
-        mUserList.add(u);
 
-        //Create Person 2
-        u = new User();
-        u.mFirstName = "Tjebbe";
-        u.mLastName = "Kerstens";
-        u.mGender = "Male";
-        u.mEmail = "tjkerstens@live.nl";
-        mUserList.add(u);
+        if(mUserList.size() <= 0) {
+            for (int i = 0; i < 5; i++){
+                GETRequest();
+            }
+        }
 
-        //Create Person 3
-        u = new User();
-        u.mFirstName = "Lucien";
-        u.mLastName = "Ros";
-        u.mGender = "Female";
-        u.mEmail = "rosluuk@gmail.com";
-        mUserList.add(u);
-
-        //Create Person 4
-        u = new User();
-        u.mFirstName = "Paul";
-        u.mLastName = "van den Burg";
-        u.mGender = "Male";
-        u.mEmail = "info@paulvandenburg.nl";
-        mUserList.add(u);
-
+        Log.i("userlist", mUserList.toString());
         mUserListView = (ListView) findViewById(R.id.userListView);
 
         //Koppelen van de list
@@ -80,5 +69,62 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         startActivity(i);
 
+    }
+
+    private void getJSON(String response)
+    {
+        String firstName = "Orlando";
+        String lastName = "Smits";
+        String image = "Imagestring";
+        String gender = "Male";
+        String email = "orlandosmits@live.nl";
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONObject results = jsonObject.getJSONArray("results").getJSONObject(0);
+
+            JSONObject name = results.getJSONObject("name");
+            firstName = name.get("first").toString();
+            lastName = name.get("last").toString();
+
+            JSONObject thumbnail = results.getJSONObject("picture");
+            image = thumbnail.get("large").toString();
+            gender = results.get("gender").toString();
+            email = results.get("email").toString();
+
+            Log.i("Return Data", firstName + lastName + image + gender + email);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        User u = new User();
+        u.mFirstName = firstName;
+        u.mLastName = lastName;
+        u.mGender = gender;
+        u.mEmail = email;
+        u.mImage = image;
+
+        mUserList.add(u);
+    }
+
+    public void GETRequest() {
+        String url = "https://api.randomuser.me";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>(){
+
+                    @Override
+                    public void onResponse(String response) {
+                        getJSON(response);
+                    }
+                }, new Response.ErrorListener(){
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("getRandomUser", error.toString());
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
     }
 }

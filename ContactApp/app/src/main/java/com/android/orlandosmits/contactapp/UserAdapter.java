@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 /**
@@ -65,7 +67,7 @@ public class UserAdapter extends BaseAdapter {
 
         viewHolder.name.setText(user.mFirstName);
         viewHolder.email.setText(user.mEmail);
-        viewHolder.imageView.setImageBitmap(user.bitmap);
+        Picasso.with(mContext).load(user.mImage).into(viewHolder.imageView);
 
         return convertView;
     }
