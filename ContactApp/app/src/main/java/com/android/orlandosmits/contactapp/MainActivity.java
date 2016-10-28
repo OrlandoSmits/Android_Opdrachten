@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         i.putExtra("UserName",  user.mFirstName);
         i.putExtra("UserLastName", user.mLastName);
         i.putExtra("UserEmail", user.mEmail);
+        i.putExtra("UserGender", user.mGender);
+        i.putExtra("UserImage", user.mImage);
 
         startActivity(i);
 
@@ -79,7 +81,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     {
         String firstName = "Orlando";
         String lastName = "Smits";
-        String age = "21";
         String image = "Imagestring";
         String gender = "Male";
         String email = "orlandosmits@live.nl";
@@ -109,7 +110,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         u.mEmail = email;
         u.mImage = image;
 
-        mUserList.add(u);
         dbHandler.addUser(u);
 
         mUserAdapter.notifyDataSetChanged();

@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -19,6 +22,8 @@ public class DetailActivity extends AppCompatActivity {
         String username = extras.getString("UserName");
         String lastname = extras.getString("UserLastName");
         String email = extras.getString("UserEmail");
+        String gender = extras.getString("UserGender");
+        String image = extras.getString("UserImage");
 
         TextView tvName = (TextView) findViewById(R.id.tvPersonName);
         tvName.setText(username + " " + lastname);
@@ -26,18 +31,8 @@ public class DetailActivity extends AppCompatActivity {
         TextView tvEmail = (TextView) findViewById(R.id.tvPersonEmail);
         tvEmail.setText(email);
 
-        Button btnTerug = (Button) findViewById(R.id.btnTerugMenu);
-        btnTerug.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Log.i("Terug", "");
-
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-
-                startActivity(i);
-            }
-        });
+        ImageView thumbnail = (ImageView) findViewById(R.id.profilepicture);
+        Picasso.with(getApplicationContext()).load(image).into(thumbnail);
 
     }
 }
