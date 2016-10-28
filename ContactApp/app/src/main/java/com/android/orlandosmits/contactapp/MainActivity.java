@@ -1,6 +1,7 @@
 package com.android.orlandosmits.contactapp;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
     ListView mUserListView;
     UserAdapter mUserAdapter;
+    DatabaseHandler dbHandler;
     ArrayList<User> mUserList = new ArrayList<>();
 
     @Override
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dbHandler = new DatabaseHandler(this);
+        mUserList = dbHandler.getUsers();
 
         if(mUserList.size() <= 0) {
             for (int i = 0; i < 5; i++){
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     {
         String firstName = "Orlando";
         String lastName = "Smits";
+        String age = "21";
         String image = "Imagestring";
         String gender = "Male";
         String email = "orlandosmits@live.nl";
@@ -105,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         u.mImage = image;
 
         mUserList.add(u);
+        dbHandler.addUser(u);
+
+        mUserAdapter.notifyDataSetChanged();
     }
 
     public void GETRequest() {

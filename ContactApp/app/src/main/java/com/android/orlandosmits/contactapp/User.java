@@ -12,4 +12,23 @@ public class User {
     public String mEmail;
     public String mImage;
 
+    public String getmGender() {
+        return mGender;
+    }
+
+    public String getmFirstName() {
+        return mFirstName;
+    }
+
+    public String getmLastName() {
+        return mLastName;
+    }
+
+    public String getmEmail() {
+        return mEmail;
+    }
+
+    public String getmImage() {
+        return mImage;
+    }
 }
