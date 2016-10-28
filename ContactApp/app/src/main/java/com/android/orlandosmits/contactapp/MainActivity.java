@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             case R.id.action_addPerson:
                 GETRequest();
+                mUserAdapter.notifyDataSetChanged();
                 return true;
 
             default:
