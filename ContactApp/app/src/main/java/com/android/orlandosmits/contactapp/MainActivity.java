@@ -69,11 +69,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 User user = (User) mUserList.get(position);
-                CharSequence text = user.mFirstName + " verwijderd";
+                CharSequence text = user.getmFirstName() + " verwijderd";
                 int duration = Toast.LENGTH_LONG;
                 Context context = getApplicationContext();
 
-                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
                 mUserList.remove(position);
@@ -120,8 +120,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.d("SelectedItem: ", position + "");
         Intent i = new Intent(getApplicationContext(), DetailActivity.class);
         User user = (User) this.mUserList.get(position);
-        i.putExtra("UserName",  user.mFirstName);
-        i.putExtra("UserLastName", user.mLastName);
+        i.putExtra("UserName",  user.getmFirstName());
+        i.putExtra("UserLastName", user.getmLastName());
         i.putExtra("UserEmail", user.mEmail);
         i.putExtra("UserGender", user.mGender);
         i.putExtra("UserImage", user.mImage);

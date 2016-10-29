@@ -65,7 +65,7 @@ public class UserAdapter extends BaseAdapter {
 
         User user = (User) mUserArrayList.get(position);
 
-        viewHolder.name.setText(user.mFirstName);
+        viewHolder.name.setText(user.getFullName());
         viewHolder.email.setText(user.mEmail);
         Picasso.with(mContext).load(user.mImage).into(viewHolder.imageView);
 

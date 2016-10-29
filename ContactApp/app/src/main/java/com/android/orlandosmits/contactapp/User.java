@@ -17,11 +17,18 @@ public class User {
     }
 
     public String getmFirstName() {
-        return mFirstName;
+
+        String cap = mFirstName.substring(0, 1).toUpperCase() + mFirstName.substring(1);
+        return cap;
     }
 
     public String getmLastName() {
-        return mLastName;
+        String cap = mLastName.substring(0, 1).toUpperCase() + mLastName.substring(1);
+        return cap;
+    }
+
+    public String getFullName() {
+        return this.getmFirstName() + " " + this.getmLastName();
     }
 
     public String getmEmail() {
