@@ -66,6 +66,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void removeDb(){
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + DB_TABLE_NAME);
+        onCreate(db);
+
+    }
+
+
     public ArrayList<User> getUsers() {
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<User> list = new ArrayList<>();
