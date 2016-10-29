@@ -9,15 +9,6 @@
         android:background="@drawable/blueskyheader"
         android:id="@+id/homepageheader"/>
 
-    <!--<ImageView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:id="@+id/profilepicture"-->
-        <!--android:layout_height="150dp"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="70dp"-->
-        <!--android:src="@drawable/roundprofileborder"-->
-        <!--/>-->
-
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profilepicture"
