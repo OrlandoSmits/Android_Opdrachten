@@ -1,5 +1,6 @@
 package com.android.orlandosmits.contactapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Parcelable;
@@ -12,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
+import android.widget.Toast;
 
 
 import com.android.volley.Request;
@@ -64,6 +65,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mUserAdapter.notifyDataSetChanged();
 
         mUserListView.setOnItemClickListener(this);
+        mUserListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                User user = (User) mUserList.get(position);
+                CharSequence text = user.mFirstName + " verwijderd";
+                int duration = Toast.LENGTH_LONG;
+                Context context = getApplicationContext();
+
+                Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+                toast.show();
+
+                mUserList.remove(position);
+                dbHandler.removeUser(user);
+                mUserAdapter.notifyDataSetChanged();
+                return false;
+
+            }
+        });
 
     }
 

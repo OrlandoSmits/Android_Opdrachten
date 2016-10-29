@@ -66,6 +66,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void removeUser(User user){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + DB_TABLE_NAME + " WHERE " + COLOMN_FIRSTNAME + " = '" + user.mFirstName + "' AND " + COLOMN_LASTNAME + " = '" + user.mLastName +"'; ");
+
+    }
     public void removeDb(){
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + DB_TABLE_NAME);
