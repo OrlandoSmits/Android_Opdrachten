@@ -2,10 +2,12 @@ package com.android.orlandosmits.contactapp;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
+
 /**
  * Created by Orlando Smits on 6-9-2016.
  */
-public class User {
+public class User implements Serializable {
     public String mGender;
     public String mFirstName;
     public String mLastName;

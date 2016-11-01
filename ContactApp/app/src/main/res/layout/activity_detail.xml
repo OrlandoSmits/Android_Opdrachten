@@ -11,7 +11,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profilepicture"
+        android:id="@+id/userImage"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_centerHorizontal="true"
@@ -20,18 +20,24 @@
         app:civ_border_color="#FF000000"/>
 
     <TextView
-        android:id="@+id/tvPersonName"
+        android:id="@+id/userName"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/profilepicture"
+        android:layout_below="@id/userImage"
         />
     <TextView
-        android:id="@+id/tvPersonEmail"
+        android:id="@+id/userEmail"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/tvPersonName"
+        android:layout_below="@id/userName"
         />
+    <TextView
+        android:id="@+id/userGender"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/userEmail"/>
 
 </RelativeLayout>

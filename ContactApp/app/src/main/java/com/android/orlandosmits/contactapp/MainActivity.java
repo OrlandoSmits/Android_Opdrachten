@@ -120,14 +120,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Log.d("SelectedItem: ", position + "");
         Intent i = new Intent(getApplicationContext(), DetailActivity.class);
         User user = (User) this.mUserList.get(position);
-        i.putExtra("UserName",  user.getmFirstName());
-        i.putExtra("UserLastName", user.getmLastName());
-        i.putExtra("UserEmail", user.mEmail);
-        i.putExtra("UserGender", user.mGender);
-        i.putExtra("UserImage", user.mImage);
+        i.putExtra("User", user);
 
         startActivity(i);
-
     }
 
 

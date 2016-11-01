@@ -19,20 +19,25 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
        Bundle extras = getIntent().getExtras();
-        String username = extras.getString("UserName");
-        String lastname = extras.getString("UserLastName");
-        String email = extras.getString("UserEmail");
-        String gender = extras.getString("UserGender");
-        String image = extras.getString("UserImage");
+        User user = (User) extras.getSerializable("User");
 
-        TextView tvName = (TextView) findViewById(R.id.tvPersonName);
-        tvName.setText(username + " " + lastname);
+        String uName = user.getFullName();
+        String uEmail = user.getmEmail();
+        String uGender = user.getmGender();
+        String uImage = user.getmImage();
 
-        TextView tvEmail = (TextView) findViewById(R.id.tvPersonEmail);
-        tvEmail.setText(email);
 
-        ImageView thumbnail = (ImageView) findViewById(R.id.profilepicture);
-        Picasso.with(getApplicationContext()).load(image).into(thumbnail);
+        TextView tUname = (TextView) findViewById(R.id.userName);
+        tUname.setText(uName);
+
+        TextView tUemail = (TextView) findViewById(R.id.userEmail);
+        tUemail.setText(uEmail);
+
+        TextView tUgender = (TextView) findViewById(R.id.userGender);
+        tUgender.setText(uGender);
+
+        ImageView thumbnail = (ImageView) findViewById(R.id.userImage);
+        Picasso.with(getApplicationContext()).load(uImage).into(thumbnail);
 
     }
 }
